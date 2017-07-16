@@ -3,7 +3,7 @@
 /*jslint browser: true, nomen: true*/
 /*global define*/
 
-define(["../model/log_entry"], function (LogEntry) {
+define(["model/log_entry"], function (LogEntry) {
     return function (frame) {
         var player = frame.player(),
             layout = frame.layout(),
@@ -22,14 +22,14 @@ define(["../model/log_entry"], function (LogEntry) {
         })
 
         .after(800, function () {
-            model().subtitle = '<h2><em>Raft</em> is a protocol for implementing distributed consensus.</h2>'
+            model().subtitle = '<h2><em>Raft</em>是实现分布式共识的协议。</h2>'
                            + model().controls.html();
             layout.invalidate();
         })
         .after(100, wait).indefinite()
         .after(100, function () {
             frame.snapshot();
-            model().subtitle = '<h2>Let\'s look at a high level overview of how it works.</h2>'
+            model().subtitle = '<h2>让我们来看看它是如何工作的。</h2>'
                            + model().controls.html();
             layout.invalidate();
         })
@@ -39,7 +39,7 @@ define(["../model/log_entry"], function (LogEntry) {
         .after(100, function () {
             frame.snapshot();
             model().zoom([node("b")]);
-            model().subtitle = '<h2>A node can be in 1 of 3 states:</h2>'
+            model().subtitle = '<h2>一个节点的状态可以是下面三个状态中的一个:</h2>'
                            + model().controls.html();
             layout.invalidate();
         })
@@ -47,7 +47,7 @@ define(["../model/log_entry"], function (LogEntry) {
         .after(100, function () {
             frame.snapshot();
             node("b")._state = "follower";
-            model().subtitle = '<h2>The <em>Follower</em> state,</h2>'
+            model().subtitle = '<h2><em>Follower（跟随者）</em> 状态,</h2>'
                            + model().controls.html();
             layout.invalidate();
         })
@@ -55,7 +55,7 @@ define(["../model/log_entry"], function (LogEntry) {
         .after(100, function () {
             frame.snapshot();
             node("b")._state = "candidate";
-            model().subtitle = '<h2>the <em>Candidate</em> state,</h2>'
+            model().subtitle = '<h2>或者 <em>Candidate（候选人）</em> 状态,</h2>'
                            + model().controls.html();
             layout.invalidate();
         })
@@ -63,7 +63,7 @@ define(["../model/log_entry"], function (LogEntry) {
         .after(100, function () {
             frame.snapshot();
             node("b")._state = "leader";
-            model().subtitle = '<h2>or the <em>Leader</em> state.</h2>'
+            model().subtitle = '<h2>或者 <em>Leader（领导者）</em> 状态.</h2>'
                            + model().controls.html();
             layout.invalidate();
         })
@@ -73,14 +73,14 @@ define(["../model/log_entry"], function (LogEntry) {
             frame.snapshot();
             model().zoom(null);
             node("b")._state = "follower";
-            model().subtitle = '<h2>All our nodes start in the follower state.</h2>'
+            model().subtitle = '<h2>所有节点一开始都是Follower状态。</h2>'
                            + model().controls.html();
             layout.invalidate();
         })
         .after(100, wait).indefinite()
         .after(100, function () {
             frame.snapshot();
-            model().subtitle = '<h2>If followers don\'t hear from a leader then they can become a candidate.</h2>'
+            model().subtitle = '<h2>如果Follower不听从Leader的意见，那么他们就可以成为Candidate。</h2>'
                            + model().controls.html();
             layout.invalidate();
         })
@@ -91,7 +91,7 @@ define(["../model/log_entry"], function (LogEntry) {
         .after(100, wait).indefinite()
         .after(100, function () {
             frame.snapshot();
-            model().subtitle = '<h2>The candidate then requests votes from other nodes.</h2>'
+            model().subtitle = '<h2>然后，Candidate请求其他节点的给它投票以使它成为Leader。</h2>'
                            + model().controls.html();
             layout.invalidate();
         })
@@ -103,7 +103,7 @@ define(["../model/log_entry"], function (LogEntry) {
         .after(100, wait).indefinite()
         .after(100, function () {
             frame.snapshot();
-            model().subtitle = '<h2>Nodes will reply with their vote.</h2>'
+            model().subtitle = '<h2>这些节点会反馈他们的选票。</h2>'
                            + model().controls.html();
             layout.invalidate();
         })
@@ -121,14 +121,14 @@ define(["../model/log_entry"], function (LogEntry) {
         .after(100, wait).indefinite()
         .after(100, function () {
             frame.snapshot();
-            model().subtitle = '<h2>The candidate becomes the leader if it gets votes from a majority of nodes.</h2>'
+            model().subtitle = '<h2>如果Candidate从大多数节点中获得选票，他就成了Leader。</h2>'
                            + model().controls.html();
             layout.invalidate();
         })
         .after(100, wait).indefinite()
         .after(100, function () {
             frame.snapshot();
-            model().subtitle = '<h2>This process is called <em>Leader Election</em>.</h2>'
+            model().subtitle = '<h2>这个过程就叫作<em>Leader选举</em>.</h2>'
                            + model().controls.html();
             layout.invalidate();
         })
@@ -137,7 +137,7 @@ define(["../model/log_entry"], function (LogEntry) {
 
         .after(100, function () {
             frame.snapshot();
-            model().subtitle = '<h2>All changes to the system now go through the leader.</h2>'
+            model().subtitle = '<h2>现在系统的所有更改都将经过Leader。</h2>'
                            + model().controls.html();
             layout.invalidate();
         })
@@ -162,14 +162,14 @@ define(["../model/log_entry"], function (LogEntry) {
         .after(100, wait).indefinite()
         .after(100, function () {
             frame.snapshot();
-            model().subtitle = '<h2>Each change is added as an entry in the node\'s log.</h2>'
+            model().subtitle = '<h2>每次更改都在节点日志中记录一条记录。</h2>'
                            + model().controls.html();
             layout.invalidate();
         })
         .after(100, wait).indefinite()
         .after(100, function () {
             frame.snapshot();
-            model().subtitle = '<h2>This log entry is currently uncommitted so it won\'t update the node\'s value.</h2>'
+            model().subtitle = '<h2>此日志记录当前为未提交状态，因此不会真正更新节点的值。</h2>'
                            + model().controls.html();
             layout.invalidate();
         })
@@ -184,7 +184,7 @@ define(["../model/log_entry"], function (LogEntry) {
                 node("c")._log.push(new LogEntry(model(), 1, 1, "SET 5"));
                 layout.invalidate();
             });
-            model().subtitle = '<h2>To commit the entry the node first replicates it to the follower nodes...</h2>'
+            model().subtitle = '<h2>要提交日志记录，节点首先将其复制到所有Follower节点...</h2>'
                            + model().controls.html();
             layout.invalidate();
         })
@@ -197,7 +197,7 @@ define(["../model/log_entry"], function (LogEntry) {
                 layout.invalidate();
             });
             model().send(node("c"), node("a"), {type:"AEREQ"});
-            model().subtitle = '<h2>then the leader waits until a majority of nodes have written the entry.</h2>'
+            model().subtitle = '<h2>然后，Leader等待大多数Follower节点写入日志记录。</h2>'
                            + model().controls.html();
             layout.invalidate();
         })
@@ -209,7 +209,7 @@ define(["../model/log_entry"], function (LogEntry) {
         .after(100, wait).indefinite()
         .after(100, function () {
             frame.snapshot();
-            model().subtitle = '<h2>The entry is now committed on the leader node and the node state is "5".</h2>'
+            model().subtitle = '<h2>该日志记录现在已提交到Leader节点，节点值为“5”。</h2>'
                            + model().controls.html();
             layout.invalidate();
         })
@@ -226,14 +226,14 @@ define(["../model/log_entry"], function (LogEntry) {
                 node("c")._commitIndex = 1;
                 layout.invalidate();
             });
-            model().subtitle = '<h2>The leader then notifies the followers that the entry is committed.</h2>'
+            model().subtitle = '<h2>然后，Leader通知Follower，日志记录已经提交。</h2>'
                            + model().controls.html();
             layout.invalidate();
         })
         .after(100, wait).indefinite()
         .after(100, function () {
             frame.snapshot();
-            model().subtitle = '<h2>The cluster has now come to consensus about the system state.</h2>'
+            model().subtitle = '<h2>集群中的所有节点现在已经对系统值达成了共识。</h2>'
                            + model().controls.html();
             layout.invalidate();
         })
@@ -242,7 +242,7 @@ define(["../model/log_entry"], function (LogEntry) {
 
         .after(300, function () {
             frame.snapshot();
-            model().subtitle = '<h2>This process is called <em>Log Replication</em>.</h2>'
+            model().subtitle = '<h2>这个过程叫作<em>日志复制</em>.</h2>'
                            + model().controls.html();
             layout.invalidate();
         })
